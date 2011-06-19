@@ -6,6 +6,6 @@ complete your subscription, please simply reply to this e-mail.
 
 If you did not request a subscription, simply ignore this mail.
 
-Yours Sincerely
+Yours Sincerely,
 
-The list administration service
+Automated list administration service
