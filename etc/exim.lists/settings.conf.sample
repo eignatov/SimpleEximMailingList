@@ -1,0 +1,8 @@
+# The host name used as primary hostname
+HOSTNAME=lists.mediabirodalom.com
+
+# The IP address used for sending and receiving messages
+IPADDRESS=80.77.122.208
+
+# MySQL connectivity data
+hide	mysql_servers	=	localhost/listserver/listserver/yourpassword
