@@ -8,11 +8,14 @@ IPADDRESS=80.77.122.208
 hide	mysql_servers	=	localhost/listserver/listserver/yourpassword
 
 # MySQL queries
-LISTLOOKUP=SELECT id FROM lists WHERE localpart='${quote_mysql:$local_part}' AND domain='${quote_mysql:$domain}'
-LISTPOLICY=SELECT sendpolicy FROM lists WHERE id='${quote_mysql:$acl_m0}';
-ISMEMBER=SELECT id FROM listsubscribers WHERE list_id='${quote_mysql:$acl_m0}' AND subscriber_email='${quote_mysql:$sender_address}' AND awaitingapproval=0;
-ISADMIN=SELECT admin FROM listsubscribers WHERE list_id='${quote_mysql:$acl_m0}' AND subscriber_email='${quote_mysql:$sender_address}' AND awaitingapproval=0;
-LISTMEMBERS=SELECT subscriber_email FROM listsubscribers WHERE list_id='${quote_mysql:$acl_m0}' AND awaitingapproval=0;
+
+# Queries for list submissions
+QUERY_LISTLOOKUP=SELECT id FROM lists WHERE localpart='${quote_mysql:$ACL_LOCALPART}' AND domain='${quote_mysql:$ACL_DOMAIN}'
+QUERY_LISTPOLICY=SELECT sendpolicy FROM lists WHERE id='${quote_mysql:$ACL_LISTID}';
+QUERY_ISMEMBER=SELECT id FROM listsubscribers WHERE list_id='${quote_mysql:$ACL_LISTID}' AND subscriber_email='${quote_mysql:$ACL_SENDER}' AND awaitingapproval=0;
+QUERY_ISADMIN=SELECT admin FROM listsubscribers WHERE list_id='${quote_mysql:$ACL_LISTID}' AND subscriber_email='${quote_mysql:$ACL_SENDER}' AND awaitingapproval=0;
+QUERY_LISTMEMBERS=SELECT subscriber_email FROM listsubscribers WHERE list_id='${quote_mysql:$ACL_LISTID}' AND awaitingapproval=0;
+QUERY_LISTADMINS=SELECT subscriber_email FROM listsubscribers WHERE list_id='${quote_mysql:$ACL_LISTID}' AND awaitingapproval=0 AND admin=1;
 
 # Log files
 log_file_path		=	/var/log/exim.lists/exim_%slog
