@@ -22,6 +22,8 @@ CREATE TABLE listsubscribers (
 	id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	list_id INT UNSIGNED NOT NULL COMMENT 'The list this subscriber belongs to.',
 	subscriber_email VARCHAR(255) NOT NULL COMMENT 'The subscriber e-mail address.',
+	admin BOOL DEFAULT 0 NOT NULL COMMENT 'Subscriber is admin.',
+	awaitingapproval BOOL DEFAULT 0 NOT NULL COMMENT 'Subscriber is awaiting approval.',
 	INDEX i_list_id (list_id),
 	INDEX i_subscriber_email (subscriber_email),
 	CONSTRAINT fk_listsubscribers_list FOREIGN KEY i_list_id (list_id) REFERENCES lists(id) ON UPDATE CASCADE ON DELETE CASCADE,

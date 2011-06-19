@@ -6,3 +6,10 @@ IPADDRESS=80.77.122.208
 
 # MySQL connectivity data
 hide	mysql_servers	=	localhost/listserver/listserver/yourpassword
+
+# MySQL queries
+LISTLOOKUP=SELECT id FROM lists WHERE localpart='${quote_mysql:$local_part}' AND domain='${quote_mysql:$domain}'
+LISTPOLICY=SELECT sendpolicy FROM lists WHERE id='${quote_mysql:$acl_m0}';
+ISMEMBER=SELECT id FROM listsubscribers WHERE list_id='${quote_mysql:$acl_m0}' AND subscriber_email='${quote_mysql:$sender}' AND awaitingapproval=0;
+ISADMIN=SELECT admin FROM listsubscribers WHERE list_id='${quote_mysql:$acl_m0}' AND subscriber_email='${quote_mysql:$sender}' AND awaitingapproval=0;
+LISTMEMBERS=SELECT email FROM listsubscribers WHERE list_id='${quote_mysql:$acl_m0}' AND awaitingapproval=0;
