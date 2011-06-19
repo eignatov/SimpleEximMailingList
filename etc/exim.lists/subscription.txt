@@ -1,0 +1,11 @@
+Dear Recipient,
+
+you have received this message, because you submitted a subscription
+request to the mailing list ${ACL_LOCALPART}@${ACL_DOMAIN}. To
+complete your subscription, please simply reply to this e-mail.
+
+If you did not request a subscription, simply ignore this mail.
+
+Yours Sincerely
+
+The list administration service
